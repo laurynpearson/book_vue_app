@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import ShowBook from './views/ShowBook.vue';
 import NewBook from './views/NewBook.vue';
+import EditBook from './views/EditBook.vue';
 
 Vue.use(Router);
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/books/:id',
       name: 'books',
       component: ShowBook
+    },
+    {
+      path: '/books/:id/edit',
+      name: 'books-edit',
+      component: EditBook
     },
     {
       path: '/about',
