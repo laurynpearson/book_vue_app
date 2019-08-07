@@ -3,7 +3,10 @@
     <h1>{{ message }}</h1>
     <div v-for="book in books">
       <h2>Title: {{ book.title }}</h2>
-      <p>Number of Pages: {{ book.pages }}</p>
+      <p>Pages: {{ book.pages }}
+      </p>
+      <p><router-link v-bind:to="/books/ + book.id">Show More Info</router-link></p>
+      <p><router-link v-bind:to="'/books/' + book.id + '/edit'">Edit the Book</router-link></p>
       <hr>
     </div>
   </div>

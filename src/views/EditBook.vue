@@ -34,7 +34,7 @@ export default {
       axios.patch('/api/books/' + this.book.id, this.book).then(response => {
         console.log('updated the book');
         this.$router.push('/books/' + this.book.id);
-      })
+      });
     }
   }
 };

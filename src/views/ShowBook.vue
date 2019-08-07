@@ -1,6 +1,7 @@
 <template>
   <div class="show">
     <h1>{{ message }}</h1>
+    <p>id: {{ book.id }}</p>
     <p>title: {{ book.title }}</p>
     <p>pages: {{ book.pages }}</p>
   </div>
@@ -19,7 +20,8 @@ export default {
     };
   },
   created: function() {
-    axios.get(`/api/books/${this.$route.params.id}`).then(response => {
+    console.log('in created');
+    axios.get('/api/books/' + this.$route.params.id).then(response => {
       console.log(response.data);
       this.book = response.data;
     });
