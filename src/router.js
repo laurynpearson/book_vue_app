@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import ShowBook from './views/ShowBook.vue';
+import NewBook from './views/NewBook.vue';
 
 Vue.use(Router);
 
@@ -13,6 +14,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/books/new',
+      name: 'books-new',
+      component: NewBook
     },
     {
       path: '/books/:id',
