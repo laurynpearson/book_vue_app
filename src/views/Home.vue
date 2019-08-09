@@ -2,10 +2,13 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <p>Search: <input type="text" v-model="searchTerm" list= "titles"></p>
+    <p><button v-on:click="setSortAttribute('title')">Sort by title</button></p>
+    <p><button v-on:click="setSortAttribute('pages')">Sort by pages</button></p>
     <datalist id="titles">
       <option v-for="book in books">{{ book.title }}</option>
     </datalist>
-    <div v-for="book in filterBy(books, searchTerm, 'title', 'pages')">
+    <!-- <div v-for="book in orderBy(books, sortAttribute)"> -->
+    <div v-for="book in orderBy(filterBy(books, searchTerm, 'title'), sortAttribute)">
       <h2>Title: {{ book.title }}</h2>
       <p>Pages: {{ book.pages }}
       </p>
@@ -28,7 +31,8 @@ export default {
     return {
       message: "Welcome to the index!",
       books: [],
-      searchTerm: ""
+      searchTerm: "",
+      sortAttribute: 'id'
     };
   },
   created: function() {
@@ -38,6 +42,11 @@ export default {
       this.books = response.data;
     });
   },
-  methods: {}
+  methods: {
+    setSortAttribute: function(attribute) {
+      console.log(attribute);
+      this.sortAttribute = attribute;
+    }
+  }
 };
 </script>
