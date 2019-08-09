@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <div v-for="book in books">
+    <p>Search: <input type="text" v-model="searchTerm"></p>
+    <div v-for="book in filterBy(books, searchTerm, 'title')">
       <h2>Title: {{ book.title }}</h2>
       <p>Pages: {{ book.pages }}
       </p>
@@ -17,11 +18,14 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       message: "Welcome to the index!",
-      books: []
+      books: [],
+      searchTerm: ""
     };
   },
   created: function() {
