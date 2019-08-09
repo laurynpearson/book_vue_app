@@ -4,6 +4,7 @@
     <p>id: {{ book.id }}</p>
     <p>title: {{ book.title }}</p>
     <p>pages: {{ book.pages }}</p>
+    <button v-on:click="destroyBook()">Destroy the Book</button>
   </div>
 </template>
 
@@ -26,6 +27,12 @@ export default {
       this.book = response.data;
     });
   },
-  methods: {}
+  methods: {
+    destroyBook: function() {
+      axios.delete('/api/books/' + this.book.id).then(response => {
+        this.$router.push('/');
+      });
+    }
+  }
 };
 </script>
