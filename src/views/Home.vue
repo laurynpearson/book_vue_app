@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <p>Search: <input type="text" v-model="searchTerm"></p>
+    <p>Search: <input type="text" v-model="searchTerm" list= "titles"></p>
+    <datalist id="titles">
+      <option v-for="book in books">{{ book.title }}</option>
+    </datalist>
     <div v-for="book in filterBy(books, searchTerm, 'title', 'pages')">
       <h2>Title: {{ book.title }}</h2>
       <p>Pages: {{ book.pages }}
